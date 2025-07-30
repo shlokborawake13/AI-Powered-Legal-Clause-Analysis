@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useEffect, useRef, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { useToast } from "@/hooks/use-toast";
 import { processQueryAction } from '@/app/actions';
 import type { LLMDecisionLogicOutput } from '@/ai/flows/llm-decision-logic';
@@ -46,7 +46,7 @@ function SubmitButton() {
 }
 
 export default function Home() {
-  const [state, formAction] = useFormState(processQueryAction, initialState);
+  const [state, formAction] = useActionState(processQueryAction, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
